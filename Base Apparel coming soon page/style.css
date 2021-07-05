@@ -86,7 +86,7 @@ body {
 	line-height: 25px;
 }
 
-form {
+form div {
 	position: relative;
 }
 
@@ -98,13 +98,40 @@ input {
 	width: 100%;
 }
 
+.requirements {
+	position: absolute;
+	color: hsl(0, 93%, 68%);
+	padding: 1rem 2rem;
+	opacity: 0;
+}
+
+.form-invalid-icon {
+	position: absolute;
+	top: 50%;
+	right: 120px;
+	transform: translateY(-50%);
+	opacity: 0;
+}
+
 input::placeholder {
 	color: hsl(0, 36%, 70%);
 	font-family: "Josefin Sans", sans-serif;
 	font-size: 16px;
 }
 
-*:focus {
+input:invalid:not(:focus):not(:placeholder-shown) {
+	border: 2px hsl(0, 93%, 68%) solid;
+}
+
+input:invalid:focus:not(:placeholder-shown) ~ .requirements {
+	opacity: 1;
+}
+
+input:invalid:focus:not(:placeholder-shown) ~ .form-invalid-icon {
+	opacity: 1;
+}
+
+input:focus {
 	outline: none;
 }
 
@@ -124,6 +151,15 @@ button {
 button:hover {
 	filter: brightness(125%);
 	box-shadow: 0 10px 25px 0 rgb(170, 125, 125);
+}
+
+@media screen and (max-width: 1440px) {
+	.content {
+		width: 50%;
+	}
+	.image {
+		width: 50%;
+	}
 }
 
 /* Attribution Styles */
