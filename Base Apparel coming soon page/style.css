@@ -1,8 +1,12 @@
+/* Defaults Reset */
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
+
+/* Main Layout & Rules */
 
 body {
 	font-size: 16px;
@@ -14,20 +18,30 @@ body {
 	display: flex;
 	width: 100%;
 	height: 100vh;
-	justify-content: stretch;
+	justify-content: center;
 	align-items: center;
 	flex-direction: row-reverse;
 }
 
-.image {
+.desktop-image {
 	height: 100%;
-	width: 60%;
+	width: 100%;
+	flex: 1 3 auto;
 }
 
-.image img {
+.desktop-image img {
 	height: 100%;
 	width: 100%;
 	object-fit: cover;
+}
+
+.mobile-image {
+	width: 100%;
+	display: none;
+}
+
+.mobile-image img {
+	width: 100%;
 }
 
 .content {
@@ -36,6 +50,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	flex: 2 2 auto;
 }
 
 .bg-image {
@@ -43,6 +58,7 @@ body {
 	height: 100%;
 	position: absolute;
 	z-index: -10;
+	display: block;
 }
 
 .bg-image img {
@@ -52,15 +68,22 @@ body {
 }
 
 .logo {
-	margin: 4rem 15rem;
-	align-self: flex-start;
+	display: flex;
+	width: 100%;
 }
 
-.main-content {
+.logo img {
 	margin: 4rem 15rem;
+}
+
+/* Main Content */
+
+.main-content {
+	margin: 4rem 15rem 15rem 15rem;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
+	justify-content: center;
+	height: 100%;
 }
 
 .main-content h1 {
@@ -85,6 +108,8 @@ body {
 	font-weight: 400;
 	line-height: 25px;
 }
+
+/* Form */
 
 form div {
 	position: relative;
@@ -119,15 +144,15 @@ input::placeholder {
 	font-size: 16px;
 }
 
-input:invalid:not(:focus):not(:placeholder-shown) {
+input:invalid:not(:placeholder-shown) {
 	border: 2px hsl(0, 93%, 68%) solid;
 }
 
-input:invalid:focus:not(:placeholder-shown) ~ .requirements {
+input:invalid:not(:placeholder-shown) ~ .requirements {
 	opacity: 1;
 }
 
-input:invalid:focus:not(:placeholder-shown) ~ .form-invalid-icon {
+input:invalid:not(:placeholder-shown) ~ .form-invalid-icon {
 	opacity: 1;
 }
 
@@ -153,12 +178,62 @@ button:hover {
 	box-shadow: 0 10px 25px 0 rgb(170, 125, 125);
 }
 
-@media screen and (max-width: 1440px) {
-	.content {
-		width: 50%;
+/* Mobile Styles */
+
+@media screen and (max-width: 1500px) {
+	.main-content {
+		margin: 0rem 5rem 5rem 5rem;
 	}
-	.image {
-		width: 50%;
+	.logo img {
+		margin: 4rem;
+	}
+}
+
+@media screen and (max-width: 1100px) {
+	.main-content span,
+	.main-content h1 {
+		font-size: 3rem;
+		letter-spacing: 10px;
+	}
+	.main-content {
+		text-align: center;
+		width: 80%;
+		margin: 5rem;
+	}
+	.logo img {
+		margin: 2rem;
+	}
+	.bg-image {
+		display: none;
+	}
+	.desktop-image {
+		display: none;
+	}
+	.mobile-image {
+		display: block;
+	}
+	.mobile-image img {
+		height: 40vh;
+		object-fit: cover;
+		object-position: top;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.main-content {
+		margin: 5rem;
+	}
+	.mobile-image img {
+		height: 30vh;
+	}
+}
+
+@media screen and (max-width: 375px) {
+	.main-content {
+		margin: 5rem;
+	}
+	.mobile-image img {
+		height: 25vh;
 	}
 }
 
