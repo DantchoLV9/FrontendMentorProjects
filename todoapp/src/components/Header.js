@@ -20,6 +20,7 @@ const StyledHeader = styled.header`
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
+	margin-bottom: 3rem;
 	h1 {
 		text-transform: uppercase;
 		color: hsl(0, 0%, 98%);
