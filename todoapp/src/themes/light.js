@@ -5,6 +5,7 @@ const lightTheme = {
 	text: "hsl(235, 19%, 35%)",
 	grayText: "hsl(236, 9%, 61%)",
 	completedText: "hsl(233, 11%, 84%)",
+	shadow: "rgba(0, 0, 100, 0.1)",
 };
 
 export default lightTheme;

@@ -7,6 +7,7 @@ import BackgroundImage from "./components/BackgroundImage";
 import lightTheme from "./themes/light";
 import darkTheme from "./themes/dark";
 import TodoInput from "./components/TodoInput";
+import TodoList from "./components/TodoList";
 
 function App() {
 	// Code for the themes
@@ -30,6 +31,12 @@ function App() {
 	// Code for the todos
 	const [todoList, setTodoList] = useState([]);
 
+	useEffect(() => {
+		if (localStorage.getItem("todos")) {
+			setTodoList(JSON.parse(localStorage.getItem("todos")));
+		}
+	}, []);
+
 	const addTodoHandler = (text) => {
 		let newTodo = { id: uuidv4(), text: text };
 		setTodoList([...todoList, newTodo]);
@@ -48,6 +55,7 @@ function App() {
 						changeThemeHandler={changeThemeHandler}
 					/>
 					<TodoInput addTodoHandler={addTodoHandler} />
+					<TodoList todoList={todoList} />
 				</MainContent>
 			</MainContainer>
 		</ThemeProvider>

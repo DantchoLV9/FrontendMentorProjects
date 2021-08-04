@@ -44,6 +44,7 @@ const TodoInputContainer = styled.form`
 	border-radius: 5px;
 	overflow: hidden;
 	padding-left: 1.2rem;
+	margin-bottom: 2rem;
 `;
 
 const StyledInput = styled.input`
