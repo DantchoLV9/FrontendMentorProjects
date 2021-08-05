@@ -6,6 +6,7 @@ const darkTheme = {
 	grayText: "hsl(234, 11%, 52%)",
 	completedText: "hsl(233, 14%, 35%)",
 	shadow: "rgba(0, 0, 0, 0.3)",
+	blue: "hsl(220, 98%, 61%)",
 };
 
 export default darkTheme;

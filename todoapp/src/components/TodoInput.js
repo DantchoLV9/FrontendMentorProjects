@@ -29,13 +29,6 @@ const TodoInput = ({ addTodoHandler }) => {
 	);
 };
 
-const CheckBox = styled.div`
-	width: 25px;
-	height: 25px;
-	border: 1px solid ${(props) => props.theme.border};
-	border-radius: 50%;
-`;
-
 const TodoInputContainer = styled.form`
 	width: 100%;
 	display: flex;
@@ -47,6 +40,13 @@ const TodoInputContainer = styled.form`
 	margin-bottom: 2rem;
 `;
 
+const CheckBox = styled.div`
+	width: 25px;
+	height: 25px;
+	border: 1px solid ${(props) => props.theme.border};
+	border-radius: 50%;
+`;
+
 const StyledInput = styled.input`
 	font-size: 1.4rem;
 	padding: 1.2rem;
@@ -56,6 +56,7 @@ const StyledInput = styled.input`
 	font-family: "Josefin Sans", sans-serif;
 	background: none;
 	color: ${(props) => props.theme.text};
+	caret-color: ${(props) => props.theme.blue};
 	::placeholder {
 		color: ${(props) => props.theme.grayText};
 		font-family: "Josefin Sans", sans-serif;

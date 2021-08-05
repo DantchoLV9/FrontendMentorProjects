@@ -28,6 +28,7 @@ function App() {
 			localStorage.setItem("theme", "light");
 		}
 	};
+
 	// Code for the todos
 	const [todoList, setTodoList] = useState([]);
 
@@ -38,9 +39,31 @@ function App() {
 	}, []);
 
 	const addTodoHandler = (text) => {
-		let newTodo = { id: uuidv4(), text: text };
+		let newTodo = { id: uuidv4(), text: text, state: false };
 		setTodoList([...todoList, newTodo]);
 		localStorage.setItem("todos", JSON.stringify([...todoList, newTodo]));
+	};
+
+	const removeTodoHandler = (id) => {
+		let todos = todoList.filter((todo) => todo.id !== id);
+		setTodoList(todos);
+		localStorage.setItem("todos", JSON.stringify(todos));
+	};
+
+	const todoStateHandler = (id, state) => {
+		let todos = todoList;
+		let currentTodo = todoList.find((task) => task.id === id);
+		let currentTodoIndex = todoList.indexOf(currentTodo);
+		currentTodo.state = state;
+		todos[currentTodoIndex] = currentTodo;
+		setTodoList([...todos]);
+		localStorage.setItem("todos", JSON.stringify([...todos]));
+	};
+
+	const clearCompletedHandler = () => {
+		let todos = todoList.filter((todo) => !todo.state);
+		setTodoList(todos);
+		localStorage.setItem("todos", JSON.stringify(todos));
 	};
 
 	console.log(todoList);
@@ -55,7 +78,12 @@ function App() {
 						changeThemeHandler={changeThemeHandler}
 					/>
 					<TodoInput addTodoHandler={addTodoHandler} />
-					<TodoList todoList={todoList} />
+					<TodoList
+						todoList={todoList}
+						todoStateHandler={todoStateHandler}
+						clearCompletedHandler={clearCompletedHandler}
+						removeTodoHandler={removeTodoHandler}
+					/>
 				</MainContent>
 			</MainContainer>
 		</ThemeProvider>
