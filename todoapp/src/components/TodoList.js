@@ -42,6 +42,13 @@ const TodoList = ({
 					removeTodoHandler={removeTodoHandler}
 				/>
 			))}
+			{todosToDisplay.length === 0 ? (
+				<NoDataMessage>
+					<p>No data to show</p>
+				</NoDataMessage>
+			) : (
+				""
+			)}
 			<ControlsSection>
 				<p>{remainingTasks} items left</p>
 				<DisplayControls>
@@ -103,6 +110,16 @@ const ControlsSection = styled.div`
 			color: ${(props) => props.theme.blue};
 		}
 	}
+`;
+
+const NoDataMessage = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.2rem;
+	color: ${(props) => props.theme.text};
+	font-size: 1.4rem;
+	border-bottom: 1px solid ${(props) => props.theme.border};
 `;
 
 const DisplayControls = styled.div`
