@@ -85,6 +85,7 @@ const StyledTodoList = styled.div`
 	width: 100%;
 	background: ${(props) => props.theme.contentBg};
 	box-shadow: 0px 10px 40px 5px ${(props) => props.theme.shadow};
+	margin-bottom: 5rem;
 `;
 
 const ControlsSection = styled.div`
