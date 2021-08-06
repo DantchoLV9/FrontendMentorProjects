@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Droppable } from "react-beautiful-dnd";
 import TodoItem from "./TodoItem";
 
 const TodoList = ({
@@ -15,15 +16,19 @@ const TodoList = ({
 		localStorage.setItem("displayMode", displayMode);
 	}, [displayMode]);
 	let todosToDisplay;
+	let isDragDisabled;
 	switch (displayMode) {
 		case "all":
 			todosToDisplay = todoList;
+			isDragDisabled = false;
 			break;
 		case "active":
 			todosToDisplay = todoList.filter((todo) => !todo.state);
+			isDragDisabled = true;
 			break;
 		case "completed":
 			todosToDisplay = todoList.filter((todo) => todo.state);
+			isDragDisabled = true;
 			break;
 		default:
 			setDisplayMode("all");
@@ -32,41 +37,65 @@ const TodoList = ({
 	const remainingTasks = todosToDisplay.filter(
 		(task) => task.state === false
 	).length;
+
 	return (
-		<StyledTodoList>
-			{todosToDisplay.map((todo) => (
-				<TodoItem
-					key={todo.id}
-					todo={todo}
-					todoStateHandler={todoStateHandler}
-					removeTodoHandler={removeTodoHandler}
-				/>
-			))}
-			<ControlsSection>
-				<p>{remainingTasks} items left</p>
-				<DisplayControls>
-					<button
-						className={displayMode === "all" ? "selected" : ""}
-						onClick={() => setDisplayMode("all")}
-					>
-						All
-					</button>
-					<button
-						className={displayMode === "active" ? "selected" : ""}
-						onClick={() => setDisplayMode("active")}
-					>
-						Active
-					</button>
-					<button
-						className={displayMode === "completed" ? "selected" : ""}
-						onClick={() => setDisplayMode("completed")}
-					>
-						Completed
-					</button>
-				</DisplayControls>
-				<button onClick={clearCompletedHandler}>Clear Completed</button>
-			</ControlsSection>
-		</StyledTodoList>
+		<>
+			<StyledTodoList>
+				<Droppable droppableId="task-list">
+					{(provided) => (
+						<TaskList ref={provided.innerRef} {...provided.droppableProps}>
+							{todosToDisplay.map((todo, index) => (
+								<TodoItem
+									key={todo.id}
+									todo={todo}
+									todoStateHandler={todoStateHandler}
+									removeTodoHandler={removeTodoHandler}
+									index={index}
+									isDragDisabled={isDragDisabled}
+								/>
+							))}
+							{todosToDisplay.length === 0 ? (
+								<NoDataMessage>
+									<p>No data to show</p>
+								</NoDataMessage>
+							) : (
+								""
+							)}
+							{provided.placeholder}
+						</TaskList>
+					)}
+				</Droppable>
+				<ControlsSection>
+					<p>{remainingTasks} items left</p>
+					<DisplayControls>
+						<button
+							className={displayMode === "all" ? "selected" : ""}
+							onClick={() => setDisplayMode("all")}
+						>
+							All
+						</button>
+						<button
+							className={displayMode === "active" ? "selected" : ""}
+							onClick={() => setDisplayMode("active")}
+						>
+							Active
+						</button>
+						<button
+							className={displayMode === "completed" ? "selected" : ""}
+							onClick={() => setDisplayMode("completed")}
+						>
+							Completed
+						</button>
+					</DisplayControls>
+					<button onClick={clearCompletedHandler}>Clear Completed</button>
+				</ControlsSection>
+			</StyledTodoList>
+			{!isDragDisabled && (
+				<DragMessage>
+					<p>Drag and drop to reorder list</p>
+				</DragMessage>
+			)}
+		</>
 	);
 };
 
@@ -78,6 +107,12 @@ const StyledTodoList = styled.div`
 	width: 100%;
 	background: ${(props) => props.theme.contentBg};
 	box-shadow: 0px 10px 40px 5px ${(props) => props.theme.shadow};
+	margin-bottom: 5rem;
+`;
+
+const TaskList = styled.div`
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
 `;
 
 const ControlsSection = styled.div`
@@ -105,6 +140,16 @@ const ControlsSection = styled.div`
 	}
 `;
 
+const NoDataMessage = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.2rem;
+	color: ${(props) => props.theme.text};
+	font-size: 1.4rem;
+	border-bottom: 1px solid ${(props) => props.theme.border};
+`;
+
 const DisplayControls = styled.div`
 	display: flex;
 	column-gap: 1rem;
@@ -122,6 +167,12 @@ const DisplayControls = styled.div`
 		background: ${(props) => props.theme.contentBg};
 		box-shadow: 0px 5px 20px 5px ${(props) => props.theme.shadow};
 	}
+`;
+
+const DragMessage = styled.div`
+	margin-bottom: 5rem;
+	font-size: 1rem;
+	color: ${(props) => props.theme.grayText};
 `;
 
 export default TodoList;

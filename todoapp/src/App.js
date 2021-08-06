@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styled, { ThemeProvider } from "styled-components";
 import GlobalStyle from "./components/GlobalStyles";
+import { DragDropContext } from "react-beautiful-dnd";
 import Header from "./components/Header";
 import BackgroundImage from "./components/BackgroundImage";
 import lightTheme from "./themes/light";
@@ -66,6 +67,22 @@ function App() {
 		localStorage.setItem("todos", JSON.stringify(todos));
 	};
 
+	const onDragEnd = (result) => {
+		const { destination, source, draggableId } = result;
+		const todos = todoList;
+		const currentTodo = todoList.find((todo) => todo.id === draggableId);
+		if (!destination) {
+			return;
+		}
+		if (destination.index === source.index) {
+			return;
+		}
+		todos.splice(source.index, 1);
+		todos.splice(destination.index, 0, currentTodo);
+		setTodoList(todos);
+		localStorage.setItem("todos", JSON.stringify(todos));
+	};
+
 	console.log(todoList);
 	return (
 		<ThemeProvider theme={currentTheme}>
@@ -78,12 +95,14 @@ function App() {
 						changeThemeHandler={changeThemeHandler}
 					/>
 					<TodoInput addTodoHandler={addTodoHandler} />
-					<TodoList
-						todoList={todoList}
-						todoStateHandler={todoStateHandler}
-						clearCompletedHandler={clearCompletedHandler}
-						removeTodoHandler={removeTodoHandler}
-					/>
+					<DragDropContext onDragEnd={onDragEnd}>
+						<TodoList
+							todoList={todoList}
+							todoStateHandler={todoStateHandler}
+							clearCompletedHandler={clearCompletedHandler}
+							removeTodoHandler={removeTodoHandler}
+						/>
+					</DragDropContext>
 				</MainContent>
 			</MainContainer>
 		</ThemeProvider>
