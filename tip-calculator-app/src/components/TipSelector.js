@@ -32,7 +32,7 @@ const TipSelector = ({ currentTip, setTipHandler, customTipField }) => {
 					currentTip={currentTip}
 				/>
 				<input
-					className="bg-inputBG p-2 rounded-md text-center text-2xl text-dark font-bold placeholder-text focus:outline-none"
+					className="bg-inputBG border-2 border-white focus:border-primary transition caret-primary p-2 rounded-md text-center text-2xl text-dark font-bold placeholder-text focus:outline-none"
 					placeholder="Custom"
 					onChange={(e) => setTipHandler(e.target.value)}
 					ref={customTipField}

@@ -12,6 +12,9 @@ module.exports = {
 			inputBG: "hsl(189, 41%, 97%)",
 			disabled: "rgba(13,104,109,255)",
 			disabledText: "rgba(3,93,98,255)",
+			hover: "rgba(159,232,223,255)",
+			errorText: "rgb(230,125,112)",
+			errorBorder: "rgb(209,110,98)",
 		},
 		fontFamily: {
 			body: ['"Space Mono"'],
