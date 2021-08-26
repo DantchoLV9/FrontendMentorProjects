@@ -61,8 +61,8 @@ const Calculator = () => {
 		}
 	}, [bill, numberOfPeople, tip]);
 	return (
-		<div className="bg-white p-7 rounded-3xl flex flex-row gap-x-10 w-3/5">
-			<div className="flex flex-col flex-1 m-3 gap-y-10">
+		<div className="bg-white p-7 rounded-t-3xl md:rounded-3xl flex flex-col md:flex-row md:gap-x-6 lg:gap-x-10 w-auto md:w-11/12 lg:w-9/12 xl:w-3/5 2xl:w-3/6">
+			<div className="flex flex-col flex-1 m-2 mb-8 md:m-3 gap-y-8 md:gap-y-10">
 				<Input
 					fieldRef={billField}
 					icon={dollarIcon}
@@ -86,8 +86,8 @@ const Calculator = () => {
 					value={numberOfPeople}
 				/>
 			</div>
-			<div className="flex flex-col flex-1 bg-dark p-10 rounded-2xl">
-				<div className="flex flex-row justify-between text-white mb-14">
+			<div className="flex flex-col flex-1 bg-dark p-6 md:p-10 rounded-2xl gap-y-10 md:gap-y-0">
+				<div className="flex flex-row justify-between text-white md:mb-14">
 					<p className="font-bold">
 						Tip Amount
 						<br />

@@ -5,7 +5,7 @@ const TipSelector = ({ currentTip, setTipHandler, customTipField }) => {
 	return (
 		<div className="flex flex-col">
 			<label className="text-text font-bold mb-2">Select Tip %</label>
-			<div className="grid grid-cols-3 gap-3">
+			<div className="grid grid-cols-2 md:grid-cols-3 gap-3">
 				<TipButton
 					percentage="5"
 					setTipHandler={setTipHandler}
