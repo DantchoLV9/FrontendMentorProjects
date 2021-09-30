@@ -1,24 +1,32 @@
 import styled from "styled-components";
+import iconDown from "../images/icon-down.svg";
+import iconUp from "../images/icon-up.svg";
 
 const StatCard = ({
 	borderColor,
-	followers,
-	socialMediaName,
+	data,
+	dataName,
 	icon,
-	iconAlt,
+	linkText,
+	changeCount,
+	changePositive,
 }) => {
 	return (
-		<StyledStatCard borderColor={borderColor}>
+		<StyledStatCard borderColor={borderColor} changePositive={changePositive}>
 			<div className="top-border"></div>
 			<div className="link">
-				<img src={icon} alt={iconAlt} />
+				<img src={icon} alt="" />
 				<a href="/" target="_blank" rel="noreferrer">
-					Social Media Link
+					{linkText}
 				</a>
 			</div>
 			<div className="data">
-				<span className="data-count">{followers}</span>
-				<span className="data-name">{socialMediaName}</span>
+				<span className="data-count">{data}</span>
+				<span className="data-name">{dataName}</span>
+			</div>
+			<div className="change-data">
+				<img src={changePositive ? iconUp : iconDown} alt="" />
+				<span>{changeCount} Today</span>
 			</div>
 		</StyledStatCard>
 	);
@@ -29,7 +37,7 @@ const StyledStatCard = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	row-gap: 1rem;
+	row-gap: 2rem;
 	width: 100%;
 	background: ${(props) => props.theme.cardBg};
 	padding: 2rem;
@@ -50,13 +58,16 @@ const StyledStatCard = styled.div`
 		align-items: center;
 		column-gap: 0.6rem;
 		img {
-			width: 20%;
+			width: 1.5rem;
 		}
 		a {
 			text-decoration: none;
 			color: ${(props) => props.theme.blueFg};
 			font-weight: 700;
-			font-size: 0.8rem;
+			font-size: 0.9rem;
+			:hover {
+				text-decoration: underline;
+			}
 		}
 	}
 	.data {
@@ -64,18 +75,32 @@ const StyledStatCard = styled.div`
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-
 		text-transform: uppercase;
 		text-align: center;
+		.data-count {
+			font-size: 4.5rem;
+			font-weight: 700;
+			color: ${(props) => props.theme.whiteFg};
+		}
+		.data-name {
+			letter-spacing: 0.4rem;
+			color: ${(props) => props.theme.blueFg};
+		}
 	}
-	.data-count {
-		font-size: 5rem;
-		font-weight: 700;
-		color: ${(props) => props.theme.whiteFg};
-	}
-	.data-name {
-		letter-spacing: 0.4rem;
-		color: ${(props) => props.theme.blueFg};
+	.change-data {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		column-gap: 0.5rem;
+		width: 100%;
+		img {
+			width: 0.7rem;
+		}
+		span {
+			font-weight: 700;
+			color: ${(props) =>
+				props.changePositive ? "hsl(163, 72%, 41%)" : "hsl(356, 69%, 56%)"};
+		}
 	}
 `;
 

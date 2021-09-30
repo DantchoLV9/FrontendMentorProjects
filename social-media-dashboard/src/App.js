@@ -9,6 +9,7 @@ import iconFacebook from "./images/icon-facebook.svg";
 import iconInstagram from "./images/icon-instagram.svg";
 import iconTwitter from "./images/icon-twitter.svg";
 import iconYouTube from "./images/icon-youtube.svg";
+import OverviewCard from "./components/OverviewCard";
 
 function App() {
 	const [currentTheme, setCurrentTheme] = useState(
@@ -35,33 +36,100 @@ function App() {
 					<StatCards>
 						<StatCard
 							borderColor="hsl(208, 92%, 53%)"
-							followers={123}
-							socialMediaName="followers"
+							data={1987}
+							dataName="followers"
 							icon={iconFacebook}
-							iconAlt="facebook icon"
+							linkText="@nathanf"
+							changeCount={12}
+							changePositive={true}
 						/>
 						<StatCard
 							borderColor="hsl(203, 89%, 53%)"
-							followers={12}
-							socialMediaName="followers"
+							data={1004}
+							dataName="followers"
 							icon={iconTwitter}
-							iconAlt="twitter icon"
+							linkText="@nathanf"
+							changeCount={99}
+							changePositive={true}
 						/>
 						<StatCard
 							borderColor="linear-gradient(to right, hsl(37, 97%, 70%), hsl(329, 70%, 58%))"
-							followers={443}
-							socialMediaName="followers"
+							data={"11k"}
+							dataName="followers"
 							icon={iconInstagram}
-							iconAlt="instagram icon"
+							linkText="@realnathanf"
+							changeCount={1099}
+							changePositive={true}
 						/>
 						<StatCard
 							borderColor="hsl(348, 97%, 39%)"
-							followers={1233}
-							socialMediaName="subscribers"
+							data={8239}
+							dataName="subscribers"
 							icon={iconYouTube}
-							iconAlt="youtube icon"
+							linkText="Nathan F."
+							changeCount={144}
+							changePositive={false}
 						/>
 					</StatCards>
+					<h2>Overview - Today</h2>
+					<OverviewCards>
+						<OverviewCard
+							icon={iconFacebook}
+							data={87}
+							dataName="Page Views"
+							changeCount={3}
+							changePositive={true}
+						/>
+						<OverviewCard
+							icon={iconFacebook}
+							data={52}
+							dataName="Likes"
+							changeCount={2}
+							changePositive={false}
+						/>
+						<OverviewCard
+							icon={iconInstagram}
+							data={5462}
+							dataName="Likes"
+							changeCount={2257}
+							changePositive={true}
+						/>
+						<OverviewCard
+							icon={iconInstagram}
+							data={"52k"}
+							dataName="Profile Views"
+							changeCount={1375}
+							changePositive={true}
+						/>
+						<OverviewCard
+							icon={iconTwitter}
+							data={117}
+							dataName="Retweets"
+							changeCount={303}
+							changePositive={true}
+						/>
+						<OverviewCard
+							icon={iconTwitter}
+							data={507}
+							dataName="Likes"
+							changeCount={553}
+							changePositive={true}
+						/>
+						<OverviewCard
+							icon={iconYouTube}
+							data={107}
+							dataName="Likes"
+							changeCount={19}
+							changePositive={false}
+						/>
+						<OverviewCard
+							icon={iconYouTube}
+							data={1407}
+							dataName="Total Views"
+							changeCount={12}
+							changePositive={false}
+						/>
+					</OverviewCards>
 				</main>
 			</MainContainer>
 		</ThemeProvider>
@@ -74,12 +142,28 @@ const MainContainer = styled.div`
 	margin: auto;
 	margin-top: 3rem;
 	width: 80%;
+	main {
+		h2 {
+			margin-top: 3.5rem;
+			margin-bottom: 2rem;
+			color: ${(props) => props.theme.blueFg};
+		}
+	}
 `;
 
 const StatCards = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	column-gap: 2rem;
+`;
+
+const OverviewCards = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	row-gap: 2rem;
 	column-gap: 2rem;
 `;
 

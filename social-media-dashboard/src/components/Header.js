@@ -6,7 +6,7 @@ const Header = ({ themeButtonValue, themeSwitchHandler }) => {
 		<StyledHeader>
 			<div className="header-text">
 				<h1>Social Media Dashboard</h1>
-				<p>Total Followers: 123123</p>
+				<p>Total Followers: 23,004</p>
 			</div>
 			<div className="theme-btn">
 				Dark Mode
