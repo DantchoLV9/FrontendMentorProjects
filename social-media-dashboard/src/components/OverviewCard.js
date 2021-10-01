@@ -29,29 +29,37 @@ const OverviewCard = ({
 const StyledOverviewCard = styled.div`
 	display: flex;
 	flex-direction: column;
-	flex: 1 1 20%;
 	justify-content: center;
 	align-items: center;
-	background: ${(props) => props.theme.cardBg};
-	padding: 2rem;
-	border-radius: 5px;
+	flex: 1 1 20%;
 	row-gap: 2rem;
+	padding: 2rem;
+	background: ${(props) => props.theme.cardBg};
+	border-radius: 5px;
+	&:hover {
+		background: ${(props) => props.theme.cardBgHover};
+	}
 	.header {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		width: 100%;
+		column-gap: 1rem;
 		span {
 			font-weight: 700;
 			color: ${(props) => props.theme.blueFg};
 		}
 		img {
 			width: 1.5rem;
+			height: 1.5rem;
 		}
 	}
 	.body {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		width: 100%;
+		column-gap: 1rem;
 		.data {
 			font-size: 2.5rem;
 			font-weight: 700;

@@ -34,16 +34,18 @@ const StatCard = ({
 
 const StyledStatCard = styled.div`
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	flex-direction: column;
+	flex: 1 1 20%;
 	row-gap: 2rem;
-	width: 100%;
-	background: ${(props) => props.theme.cardBg};
 	padding: 2rem;
+	background: ${(props) => props.theme.cardBg};
 	position: relative;
-	overflow: hidden;
 	border-radius: 5px;
+	&:hover {
+		background: ${(props) => props.theme.cardBgHover};
+	}
 	.top-border {
 		top: 0;
 		left: 0;
@@ -51,6 +53,8 @@ const StyledStatCard = styled.div`
 		width: 100%;
 		position: absolute;
 		background: ${(props) => props.borderColor};
+		border-top-left-radius: 50px;
+		border-top-right-radius: 50px;
 	}
 	.link {
 		display: flex;
@@ -75,7 +79,6 @@ const StyledStatCard = styled.div`
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		text-transform: uppercase;
 		text-align: center;
 		.data-count {
 			font-size: 4.5rem;
@@ -85,6 +88,7 @@ const StyledStatCard = styled.div`
 		.data-name {
 			letter-spacing: 0.4rem;
 			color: ${(props) => props.theme.blueFg};
+			text-transform: uppercase;
 		}
 	}
 	.change-data {

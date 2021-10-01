@@ -141,6 +141,7 @@ const MainContainer = styled.div`
 	flex-direction: column;
 	margin: auto;
 	margin-top: 3rem;
+	margin-bottom: 3rem;
 	width: 80%;
 	main {
 		h2 {
@@ -149,13 +150,21 @@ const MainContainer = styled.div`
 			color: ${(props) => props.theme.blueFg};
 		}
 	}
+	@media (max-width: 375px) {
+		width: 90%;
+	}
 `;
 
 const StatCards = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	flex-wrap: wrap;
+	row-gap: 2rem;
 	column-gap: 2rem;
+	@media (max-width: 375px) {
+		row-gap: 1.5rem;
+	}
 `;
 
 const OverviewCards = styled.div`
@@ -165,6 +174,9 @@ const OverviewCards = styled.div`
 	flex-wrap: wrap;
 	row-gap: 2rem;
 	column-gap: 2rem;
+	@media (max-width: 375px) {
+		row-gap: 1rem;
+	}
 `;
 
 export default App;

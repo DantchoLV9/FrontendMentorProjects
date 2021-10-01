@@ -29,8 +29,6 @@ const Slider = styled.div`
 	right: 0;
 	bottom: 0;
 	background: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
-	-webkit-transition: 0.4s;
-	transition: 0.4s;
 	border-radius: 34px;
 	::before {
 		position: absolute;
@@ -39,7 +37,7 @@ const Slider = styled.div`
 		width: 26px;
 		left: 4px;
 		bottom: 4px;
-		background: white;
+		background: ${(props) => props.theme.topBg};
 		-webkit-transition: 0.4s;
 		transition: 0.4s;
 		border-radius: 50%;
@@ -49,6 +47,14 @@ const Slider = styled.div`
 const StyledInput = styled.input`
 	:checked + ${Slider} {
 		background: hsl(230, 22%, 74%);
+		&:hover {
+			background: linear-gradient(
+				to right,
+				hsl(210, 78%, 56%),
+				hsl(146, 68%, 55%)
+			);
+			transition: 0.4s;
+		}
 	}
 	:focus + ${Slider} {
 		box-shadow: 0 0 1px hsl(230, 22%, 74%);
