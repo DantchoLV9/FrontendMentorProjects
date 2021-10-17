@@ -6,7 +6,7 @@ module.exports = {
 			zIndex: {
 				"-1": "-1",
 			},
-			color: {
+			colors: {
 				darkGray: "hsl(0, 0%, 55%)",
 				veryDarkGray: "hsl(0, 0%, 41%)",
 			},
