@@ -18,7 +18,8 @@ module.exports = {
 				hero: "25vw",
 			},
 			backgroundImage: {
-				hero: "url('/src/images/image-hero.jpg')",
+				hero: "url('/src/images/desktop/image-hero.jpg')",
+				mobileHero: "url('/src/images/mobile/image-hero.jpg')",
 			},
 		},
 	},
