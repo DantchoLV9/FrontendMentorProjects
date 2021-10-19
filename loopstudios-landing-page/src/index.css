@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+	.nav-button {
+		position: relative;
+	}
+	.nav-button:hover::after {
+		display: block;
+	}
+	.nav-button::after {
+		display: none;
+		content: "";
+		width: 50%;
+		height: 2px;
+		background: white;
+		position: absolute;
+		bottom: -10px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	@media (max-width: 1024px) {
+		.nav-button::after {
+			left: 0;
+			width: 25%;
+			transform: translateX(0);
+		}
+	}
+}

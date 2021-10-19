@@ -23,31 +23,31 @@ const Navbar = () => {
 				} lg:flex gap-x-10 lg:bg-transparent lg:capitalize lg:w-auto lg:h-auto lg:flex-row lg:static`}
 			>
 				<a
-					className="text-white text-3xl lg:text-xl font-josefin  lg:font-alata"
+					className="text-white text-3xl lg:text-xl font-josefin lg:font-alata nav-button"
 					href="/"
 				>
 					About
 				</a>
 				<a
-					className="text-white text-3xl lg:text-xl font-josefin lg:font-alata"
+					className="text-white text-3xl lg:text-xl font-josefin lg:font-alata nav-button"
 					href="/"
 				>
 					Careers
 				</a>
 				<a
-					className="text-white text-3xl lg:text-xl font-josefin lg:font-alata"
+					className="text-white text-3xl lg:text-xl font-josefin lg:font-alata nav-button"
 					href="/"
 				>
 					Events
 				</a>
 				<a
-					className="text-white text-3xl lg:text-xl font-josefin lg:font-alata"
+					className="text-white text-3xl lg:text-xl font-josefin lg:font-alata nav-button"
 					href="/"
 				>
 					Products
 				</a>
 				<a
-					className="text-white text-3xl lg:text-xl font-josefin lg:font-alata"
+					className="text-white text-3xl lg:text-xl font-josefin lg:font-alata nav-button"
 					href="/"
 				>
 					Support
