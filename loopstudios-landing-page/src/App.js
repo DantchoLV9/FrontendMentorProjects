@@ -1,5 +1,6 @@
 import Header from "./components/header";
 import imageInteractive from "./images/desktop/image-interactive.jpg";
+import mobileImageInteractive from "./images/mobile/image-interactive.jpg";
 
 function App() {
 	return (
@@ -10,11 +11,14 @@ function App() {
 			<div className="px-12 xl:px-56 h-screen flex items-center">
 				<div className="relative w-full lg:h-2/3 flex flex-col lg:flex-row">
 					<div className="flex-1">
-						<img
-							className="object-cover w-full h-auto lg:max-h-full lg:w-auto lg:h-full"
-							src={imageInteractive}
-							alt=""
-						/>
+						<picture>
+							<source srcSet={imageInteractive} media="(min-width: 768px)" />
+							<img
+								className="object-cover w-full h-auto lg:max-h-full lg:w-auto lg:h-full"
+								src={mobileImageInteractive}
+								alt="interactive"
+							/>
+						</picture>
 					</div>
 					<div className="bg-white pt-14 lg:pl-14 xl:pt-28 xl:pl-28 2xl:absolute left-1/2 bottom-0 flex-1 text-center lg:text-left">
 						<h2 className="inline text-5xl lg:text-6xl font-josefin uppercase">
