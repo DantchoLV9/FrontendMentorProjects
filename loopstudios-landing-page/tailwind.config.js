@@ -21,6 +21,12 @@ module.exports = {
 				hero: "url('/src/images/desktop/image-hero.jpg')",
 				mobileHero: "url('/src/images/mobile/image-hero.jpg')",
 			},
+			letterSpacing: {
+				link: ".25em",
+			},
+			opacity: {
+				55: ".55",
+			},
 		},
 	},
 	variants: {

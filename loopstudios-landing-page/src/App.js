@@ -1,4 +1,5 @@
 import Header from "./components/header";
+import ProjectsGallery from "./components/projectsGallery";
 import imageInteractive from "./images/desktop/image-interactive.jpg";
 import mobileImageInteractive from "./images/mobile/image-interactive.jpg";
 
@@ -33,6 +34,9 @@ function App() {
 						</p>
 					</div>
 				</div>
+			</div>
+			<div className="px-12 xl:px-56 flex flex-col items-center">
+				<ProjectsGallery />
 			</div>
 		</>
 	);
