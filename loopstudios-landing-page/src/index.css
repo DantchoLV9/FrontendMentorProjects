@@ -20,6 +20,39 @@
 		left: 50%;
 		transform: translateX(-50%);
 	}
+	.hover-effect-50 {
+		position: relative;
+	}
+	.hover-effect-50:hover::after {
+		display: block;
+	}
+	.hover-effect-50::after {
+		display: none;
+		content: "";
+		width: 50%;
+		height: 2px;
+		background: white;
+		position: absolute;
+		bottom: -10px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.hover-effect-100 {
+		position: relative;
+	}
+	.hover-effect-100:hover::after {
+		display: block;
+	}
+	.hover-effect-100::after {
+		display: none;
+		content: "";
+		width: 100%;
+		height: 2px;
+		background: white;
+		position: absolute;
+		bottom: -10px;
+		left: 0;
+	}
 	@media (max-width: 1024px) {
 		.nav-button::after {
 			left: 0;
